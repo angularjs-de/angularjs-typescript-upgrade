@@ -21,7 +21,7 @@ export interface IBooksApi {
 
 class HttpBooksApi implements IBooksApi {
 
-  private baseUrl: string = 'http://ajs-workshop.herokuapp.com/api/books'
+  private baseUrl: string = 'http://bookmonkey-api.angularjs.de/books'
 
   constructor(
     private $http: angular.IHttpService
