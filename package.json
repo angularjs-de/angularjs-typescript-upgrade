@@ -7,7 +7,8 @@
   },
   "main": "app/app.ts",
   "scripts": {
-    "test": "karma start"
+    "test": "karma start",
+    "start": "live-server"
   },
   "author": "Elmar Burke <elmar.burke@symetics.com>",
   "dependencies": {
@@ -28,6 +29,7 @@
     "karma-phantomjs-launcher": "^0.2.0",
     "karma-systemjs": "^0.10.0",
     "karma-typescript-preprocessor": "0.0.21",
+    "live-server": "^0.9.1",
     "phantomjs": "^1.9.18",
     "phantomjs-polyfill": "0.0.1",
     "typescript": "^1.7.5"
