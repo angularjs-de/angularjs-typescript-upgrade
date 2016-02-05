@@ -3,11 +3,11 @@
     BookMonkey
   </div>
   
-  <a class="item" ng-class="{active: navigation.isActive('^/$')}" href="#/">
+  <a class="item" ng-class="{active: $ctrl.isActive('^/$')}" href="#/">
     Home
   </a>
   
-  <a class="item" ng-class="{active: navigation.isActive('^/books')}" href="#/books">
+  <a class="item" ng-class="{active: $ctrl.isActive('^/books')}" href="#/books">
     Books
   </a>
   

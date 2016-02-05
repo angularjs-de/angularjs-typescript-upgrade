@@ -1,5 +1,5 @@
 <div class="ui relaxed divided list">
-  <div class="item" ng-repeat="book in booksIndex.books">
+  <div class="item" ng-repeat="book in $ctrl.books">
     <i class="large book middle aligned icon"></i>
     <div class="content">
       <a class="header" href="#/books/{{book.isbn}}">{{book.title}}</a>

@@ -17,6 +17,5 @@ class Navigation {
 angular.module(moduleName, [])
   .component('navigation', {
     templateUrl: 'app/components/navigation/navigation.html',
-    controller: Navigation,
-    controllerAs: 'navigation'
+    controller: Navigation
   })

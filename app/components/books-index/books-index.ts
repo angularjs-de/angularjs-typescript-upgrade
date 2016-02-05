@@ -20,6 +20,5 @@ export default moduleName
 angular.module(moduleName, [booksApiModule])
   .component('booksIndex', {
     templateUrl: 'app/components/books-index/books-index.html',
-    controller: BooksIndex,
-    controllerAs: 'booksIndex'
+    controller: BooksIndex
   })

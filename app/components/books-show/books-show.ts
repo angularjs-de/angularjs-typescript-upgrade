@@ -25,6 +25,5 @@ export default moduleName
 angular.module(moduleName, [booksApiModule])
   .component('booksShow', {
     templateUrl: 'app/components/books-show/books-show.html',
-    controller: BooksShow,
-    controllerAs: 'booksShow'
+    controller: BooksShow
   })
