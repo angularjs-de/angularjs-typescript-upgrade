@@ -1,6 +1,8 @@
 import * as angular from 'angular'
 import 'angular-route'
 
+import {upgradeAdapter} from './upgrade_adapter';
+
 import routes from './routes'
 
 import navigation from './components/navigation/navigation'
@@ -15,3 +17,5 @@ angular.module('myApp', [
   booksIndex,
   booksShow
 ])
+
+upgradeAdapter.bootstrap(document.body, ['myApp']);

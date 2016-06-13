@@ -1,3 +1,26 @@
+var packages = {
+  'app': { defaultExtension: 'ts' },
+  'rxjs': { defaultExtension: 'js' }
+};
+
+var packageNames = [
+  '@angular/common',
+  '@angular/compiler',
+  '@angular/core',
+  '@angular/http',
+  '@angular/platform-browser',
+  '@angular/platform-browser-dynamic',
+  '@angular/router',
+  '@angular/upgrade',
+  'symbol-observable',
+  'reflect-metadata'
+];
+
+// add package entries for angular packages in the form '@angular/common': { main: 'index.js', defaultExtension: 'js' }
+packageNames.forEach(function(pkgName) {
+  packages[pkgName] = { main: 'index.js', defaultExtension: 'js' };
+});
+
 System.config({
   baseURL: './',
   defaultJSExtensions: true,
@@ -6,11 +29,13 @@ System.config({
     'npm:*': 'node_modules/*'
   },
 
-  packages: {
-    'app': { defaultExtension: 'ts' }
-  },
+  packages: packages,
 
   map: {
+    '@angular': 'npm:@angular',
+    'rxjs': 'npm:rxjs',
+    'symbol-observable': 'npm:symbol-observable',
+    'reflect-metadata': 'npm:reflect-metadata',
     'angular': 'npm:angular/angular.js',
     'angular-route': 'npm:angular-route/angular-route.js',
     'jquery': 'npm:jquery/dist/jquery.js',
@@ -24,6 +49,9 @@ System.config({
   },
 
   meta: {
+    '@angular': {
+      format: 'global'
+    },
     'angular': {
       format: 'global',
       exports: 'angular',
