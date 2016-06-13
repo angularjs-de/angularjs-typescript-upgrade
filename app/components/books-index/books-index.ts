@@ -1,13 +1,13 @@
 import * as angular from 'angular'
 
-import booksApiModule, {IBook, IBooksApi} from '../../services/books-api/books-api'
+import booksApiModule, {BooksApi, IBook} from '../../services/books-api/books-api'
 
 class BooksIndex {
-  
+
   books: IBook[]
-  
+
   constructor (
-    booksApi: IBooksApi
+    booksApi: BooksApi
   ) {
     booksApi.all()
       .then(books => this.books = books)

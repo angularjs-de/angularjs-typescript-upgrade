@@ -6,9 +6,9 @@ import {upgradeAdapter} from './upgrade_adapter';
 import routes from './routes'
 
 import {NavigationComponent} from './components/navigation/navigation'
+
 import booksIndex from './components/books-index/books-index'
 import booksShow from './components/books-show/books-show'
-
 
 angular.module('myApp', [
   'ngRoute',
@@ -16,6 +16,6 @@ angular.module('myApp', [
   booksIndex,
   booksShow
 ])
-.directive('navigation', upgradeAdapter.downgradeNg2Component(NavigationComponent);
+.directive('navigation', upgradeAdapter.downgradeNg2Component(NavigationComponent))
 
 upgradeAdapter.bootstrap(document.body, ['myApp']);

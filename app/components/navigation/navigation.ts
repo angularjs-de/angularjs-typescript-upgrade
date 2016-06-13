@@ -1,9 +1,8 @@
 import {Component, Inject} from '@angular/core';
 import {upgradeAdapter} from '../../upgrade_adapter';
 
+// upgrade a1 $location service
 upgradeAdapter.upgradeNg1Provider('$location');
-
-// angular.ILocationService
 
 @Component({
   selector: 'navigation',

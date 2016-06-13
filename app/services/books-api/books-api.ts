@@ -1,4 +1,7 @@
-import * as angular from 'angular'
+import {Inject, Injectable} from '@angular/core';
+import {upgradeAdapter} from '../../upgrade_adapter';
+
+upgradeAdapter.upgradeNg1Provider('$http');
 
 export interface IBook {
   title: string
@@ -15,31 +18,39 @@ export interface IBook {
 }
 
 export interface IBooksApi {
-  all(): angular.IPromise<IBook[]>
-  getByIsbn(isbn: string): angular.IPromise<IBook>
+  all(): Promise<IBook[]>
+  getByIsbn(isbn: string): Promise<IBook>
 }
 
-class HttpBooksApi implements IBooksApi {
+@Injectable()
+export class BooksApi implements IBooksApi {
+  private $http;
 
   private baseUrl: string = 'http://bookmonkey-api.angularjs.de/books'
 
   constructor(
-    private $http: angular.IHttpService
-  ) {}
+    @Inject('$http') http
+  ) {
+    this.$http = http;
+  }
 
   public all() {
-    return this.$http.get<IBook[]>(this.baseUrl)
-      .then(booksResponse => booksResponse.data)
+    return this.$http
+      .get(this.baseUrl)
+      .then(res => res.data);
   }
 
   public getByIsbn(isbn: string) {
-    return this.$http.get<IBook>(`${this.baseUrl}/${isbn}`)
-      .then(bookResponse => bookResponse.data)
+    return this.$http
+      .get(`${this.baseUrl}/${isbn}`)
+      .then(res => res.data);
   }
 }
 
-const moduleName = 'myApp.booksApi'
+upgradeAdapter.addProvider(BooksApi);
+
+const moduleName = 'myApp.books-service'
 export default moduleName
 
 angular.module(moduleName, [])
-  .service('booksApi', HttpBooksApi)
+  .factory('booksApi', upgradeAdapter.downgradeNg2Provider(BooksApi));

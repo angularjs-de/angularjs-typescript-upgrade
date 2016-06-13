@@ -1,17 +1,17 @@
 import * as angular from 'angular'
 
-import booksApiModule, {IBook, IBooksApi} from '../../services/books-api/books-api'
+import booksApiModule, {BooksApi, IBook} from '../../services/books-api/books-api'
 
 interface IRouteParams extends angular.route.IRouteParamsService {
   isbn: string
 }
 
 class BooksShow {
-  
+
   book: IBook
-  
+
   constructor (
-    booksApi: IBooksApi,
+    booksApi: BooksApi,
     $routeParams: IRouteParams
   ) {
     booksApi.getByIsbn($routeParams.isbn)
@@ -19,7 +19,7 @@ class BooksShow {
   }
 }
 
-const moduleName = 'myApp.books-show' 
+const moduleName = 'myApp.books-show'
 export default moduleName
 
 angular.module(moduleName, [booksApiModule])
