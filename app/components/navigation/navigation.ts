@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, Input} from '@angular/core';
 import {upgradeAdapter} from '../../upgrade_adapter';
 
 @Component({
@@ -6,6 +6,9 @@ import {upgradeAdapter} from '../../upgrade_adapter';
   templateUrl: 'app/components/navigation/navigation.html'
 })
 export class NavigationComponent {
+
+  @Input() title: string;
+
   constructor(@Inject('$location') private $location) {
   }
 
