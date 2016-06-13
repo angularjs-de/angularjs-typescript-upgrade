@@ -18,4 +18,6 @@ angular.module('myApp', [
 ])
 .directive('navigation', upgradeAdapter.downgradeNg2Component(NavigationComponent);
 
-upgradeAdapter.bootstrap(document.body, ['myApp']);
+upgradeAdapter.upgradeNg1Provider('$location');
+upgradeAdapter
+    .bootstrap(document.body, ['myApp']);
