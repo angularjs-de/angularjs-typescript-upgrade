@@ -7,9 +7,12 @@ class BooksIndex {
   books: IBook[]
 
   constructor (
-    booksApi: BooksApi
-  ) {
-    booksApi.all()
+    private booksApi: BooksApi
+  ) {}
+
+  $onInit() {
+    this.booksApi
+      .all()
       .then(books => this.books = books)
   }
 }

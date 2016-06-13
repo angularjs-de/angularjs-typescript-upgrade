@@ -1,6 +1,7 @@
 import {Inject, Injectable} from '@angular/core';
 import {upgradeAdapter} from '../../upgrade_adapter';
 
+// upgrade a1 $http provider to be injectable in a2
 upgradeAdapter.upgradeNg1Provider('$http');
 
 export interface IBook {
@@ -24,15 +25,12 @@ export interface IBooksApi {
 
 @Injectable()
 export class BooksApi implements IBooksApi {
-  private $http;
-
   private baseUrl: string = 'http://bookmonkey-api.angularjs.de/books'
 
+  // inject a1 $http service
   constructor(
-    @Inject('$http') http
-  ) {
-    this.$http = http;
-  }
+    @Inject('$http') private $http
+  ) {}
 
   public all() {
     return this.$http
@@ -47,10 +45,12 @@ export class BooksApi implements IBooksApi {
   }
 }
 
-upgradeAdapter.addProvider(BooksApi);
-
 const moduleName = 'myApp.books-service'
 export default moduleName
 
+// add BookApi class to downgradable providers
+upgradeAdapter.addProvider(BooksApi);
+
 angular.module(moduleName, [])
-  .factory('booksApi', upgradeAdapter.downgradeNg2Provider(BooksApi));
+  // downgrade a2 service to a1 service
+  .service('booksApi', upgradeAdapter.downgradeNg2Provider(BooksApi));

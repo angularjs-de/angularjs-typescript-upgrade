@@ -1,5 +1,5 @@
-const moduleName = 'myApp.routes'
-export default moduleName
+const moduleName = 'myApp.routes';
+export default moduleName;
 
 angular.module(moduleName, [])
   .config(($routeProvider: angular.route.IRouteProvider) => {
@@ -12,5 +12,5 @@ angular.module(moduleName, [])
       })
       .when('/books/:isbn', {
         template: '<books-show></books-show>'
-      })
-  })
+      });
+  });
