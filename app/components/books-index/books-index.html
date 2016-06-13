@@ -1,0 +1,16 @@
+<div class="ui relaxed divided list">
+  <div class="item" ng-repeat="book in $ctrl.books">
+    <i class="large book middle aligned icon"></i>
+    <div class="content">
+      <a class="header" href="#/books/{{book.isbn}}">{{book.title}}</a>
+      <div class="description">
+        <p>{{book.subtitle}} von {{book.author}}</p>
+        <footer>
+          <div class="ui label small" ng-repeat="tag in book.tags">
+            <i class="tag icon"></i> {{tag}}
+          </div>
+        </footer>
+      </div>
+    </div>
+  </div>
+</div>
